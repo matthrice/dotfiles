@@ -1,0 +1,47 @@
+[alias]
+    st = status
+    lg = log --pretty=onelinedetail --graph
+    co = checkout
+    ci = commit
+    br = branch
+    unstage = reset HEAD --
+    stashl = stash list
+    stashp = stash pop
+    stasha = stash apply
+    cia = commit --amend
+    p = push
+    pl = pull -r
+    rb = rebase
+    rbi = rebase -i
+    rbc = rebase --continue
+    a = add
+    aa = add .
+    r = reset
+    rh = reset --hard
+    cp = cherry-pick 
+    stashd = stash drop
+    m = merge
+    undo-amend = git reset --soft HEAD@{1}
+    # list branches by recently modified
+    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' --color refs/heads | sed -e 's-refs/heads/--'"
+    # grep for something then blame the matches
+    gb = "!f() { git grep -n $1 | while IFS=: read i j k; do git blame -L $j,$j $i | cat; done }; f"
+    # branch list sorted by most recent commit
+    bl = branch --sort=-committerdate
+[include]
+    path = ~/plugins/delta/themes.gitconfig
+[core]
+    commitGraph = true
+    writeCommitGraph = true
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+[delta]
+    features = calochortus-lyallii
+    side-by-side = true
+[delta "interactive"]
+    keep-plus-minus-markers = false
+[pretty]
+    onelinedetail = %C(bold red)%h %Creset%s %C(bold green)%aN %C(bold blue)(%ar)%Creset%C(yellow)%d%Creset
+[pager]
+    branch = false

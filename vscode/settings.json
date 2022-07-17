@@ -1,0 +1,36 @@
+{
+    "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.renderWhitespace": "all",
+    "editor.minimap.enabled": false,
+    "extensions.ignoreRecommendations": true,
+    "diffEditor.codeLens": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "terminal.integrated.localEchoLatencyThreshold": -1,
+    "terminal.integrated.mouseWheelScrollSensitivity": 0.5,
+    "terminal.integrated.macOptionClickForcesSelection": true,
+    "terminal.integrated.macOptionIsMeta": true,
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.darwin": "${userHome}/.config/nvim/init.lua",
+    "workbench.iconTheme": "material-icon-theme",
+    "git.confirmSync": false,
+    "editor.quickSuggestionsDelay": 0,
+    "clangd.restartAfterCrash": true,
+    "clangd.onConfigChanged": "restart",
+    "clangd.path": "/usr/bin/clangd",
+    "clangd.arguments": [
+        "--background-index",
+        "--header-insertion=never",
+        "--log=verbose",
+        "--pretty"
+    ],
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "[cpp]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+        "editor.tabSize": 4
+    },
+    "editor.detectIndentation": false,
+    "git.ignoreLegacyWarning": true,
+    "gitlens.codeLens.enabled": false,
+    "terminal.integrated.enableMultiLinePasteWarning": false
+}
