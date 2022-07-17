@@ -19,11 +19,6 @@ tmux new-session -A -s {{name}}
 
 - Set font to JetBrains Mono Regular
 
-## Raycast
-
-- Use the `starter.rayconfig` to bootstrap the Raycast config
-- Update to use Cmd-Space instead of Spotlight
-
 ## Rectangle
 
 Preferences -> Import -> RectangleConfig
