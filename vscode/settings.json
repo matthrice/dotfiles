@@ -11,7 +11,7 @@
     "terminal.integrated.macOptionClickForcesSelection": true,
     "terminal.integrated.macOptionIsMeta": true,
     "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.darwin": "${userHome}/.config/nvim/init.lua",
+    "vscode-neovim.neovimInitVimPaths.darwin": "/Users/mrice/.config/nvim/init.lua",
     "workbench.iconTheme": "material-icon-theme",
     "git.confirmSync": false,
     "editor.quickSuggestionsDelay": 0,
@@ -32,5 +32,7 @@
     "editor.detectIndentation": false,
     "git.ignoreLegacyWarning": true,
     "gitlens.codeLens.enabled": false,
-    "terminal.integrated.enableMultiLinePasteWarning": false
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "cmake.configureOnOpen": false,
+    "terminal.integrated.shellIntegration.enabled": true
 }
