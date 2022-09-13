@@ -61,6 +61,13 @@ if [[ ! -d $HOME/plugins/pure ]]; then
     git clone https://github.com/sindresorhus/pure.git $HOME/plugins/pure
 fi
 
+# install git completion
+if [[ ! -d $HOME/plugins/git-completion ]]; then
+    echo "Installing git completion..."
+    mkdir "$HOME/plugins/git-completion"
+    wget https://git.kernel.org/pub/scm/git/git.git/plain/contrib/completion/git-completion.zsh -O "$HOME/plugins/git-completion/git-completion.zsh"
+fi
+
 # clone git delta for themes
 if [[ ! -d $HOME/plugins/delta ]]; then
     echo "Installing delta themes..."
@@ -83,6 +90,7 @@ ln -sf $HOME/.dotfiles/neovim/init.lua $HOME/.config/nvim/init.lua
 echo "Linking git config..."
 mkdir -p $HOME/.config/git
 ln -sf $HOME/.dotfiles/git/config $HOME/.config/git/config
+
 
 # tmux
 echo "Linking tmux config..."
