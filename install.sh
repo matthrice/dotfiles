@@ -108,6 +108,10 @@ if [[ $(uname) == "Darwin" ]]; then
     # intellij 
     echo "Linking intellij config..."
     ln -sf $HOME/.dotfiles/intellij/.ideavimrc $HOME/.ideavimrc
+
+    # wezterm
+    echo "Linking wezterm config..."
+    ln -sF $HOME/.dotfiles/wezterm/.wezterm.lua $HOME/.wezterm.lua
 fi
 
 if [[ $overwrite_zshrc == true ]]; then

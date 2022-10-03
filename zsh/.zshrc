@@ -41,6 +41,3 @@ prompt pure
 
 # fast syntax highlighting
 source "$HOME/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
-
-# git completion
-fpath+="$HOME/plugins/git-completion"

@@ -13,28 +13,38 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
+local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
+
 -------------------- PLUGINS -------------------------------
 vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
-  use 'Mofiqul/vscode.nvim'
+   use { "catppuccin/nvim", as = "catppuccin" }
   use { 'ibhagwan/fzf-lua',
-    requires = { 'vijaymarupudi/nvim-fzf' }
+   requires = { 'vijaymarupudi/nvim-fzf' }
   }
   use {
     'nvim-lualine/lualine.nvim',
   }
+  use "kyazdani42/nvim-tree.lua"
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
+  use {"ellisonleao/glow.nvim"}
 end)
 
---------- vscode.nvim ---------
-vim.g.vscode_style = "dark"
-vim.cmd[[colorscheme vscode]]
+--------- catpuccin.nvim ---------
+vim.g.catppuccin_flavour = "frappe"
+require("catppuccin").setup()
+vim.cmd [[colorscheme catppuccin]]
 
 --------- lua-line ---------
 require('lualine').setup{
   options = {
-    theme  = 'vscode',
+    theme  = 'catppuccin',
     icons_enabled = false,
   },
 }
@@ -43,6 +53,38 @@ require('lualine').setup{
 vim.api.nvim_set_keymap('n', '<c-P>',
   "<cmd>lua require('fzf-lua').files()<CR>",
   { noremap = true, silent = true })
+
+--------- nvim-tree ---------
+
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
+
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  renderer = {
+    icons = {
+      show = {
+        file = false,
+        folder = false,
+        folder_arrow = false,
+        git = false,
+      },
+    },
+  },
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
+map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
 
 -------------------- OPTIONS -------------------------------
 opt.completeopt = {'menuone', 'noinsert', 'noselect'}  -- Completion options (for deoplete)
@@ -65,6 +107,7 @@ opt.tabstop = 2                     -- Number of spaces tabs count for
 opt.termguicolors = true            -- True color support
 opt.wildmode = {'list', 'longest'}  -- Command-line completion mode
 opt.wrap = false                    -- Disable line wrap
+opt.lazyredraw = true               -- Faster scrolling
 
 -- escape
 map('i', 'jk', '<Esc>')
@@ -76,3 +119,37 @@ map('n', '<c-h>', '<c-w>h')
 map('n', '<c-k>', '<c-w>k')
 map('n', '<c-l>', '<c-w>l')
 
+-------------------- AUTOCMDS -------------------------------
+
+-- Highlight yanked area
+augroup('YankHighlight', { clear = true })
+autocmd('TextYankPost', {
+  group = 'YankHighlight',
+  callback = function()
+    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
+  end
+})
+
+-- Remove whitespace on save
+autocmd('BufWritePre', {
+  pattern = '',
+  command = ":%s/\\s\\+$//e"
+})
+
+-- Set indentation to 2 spaces
+augroup('setIndent', { clear = true })
+autocmd('Filetype', {
+  group = 'setIndent',
+  pattern = { 'xml', 'html', 'xhtml', 'css', 'scss', 'javascript', 'typescript',
+    'yaml', 'lua'
+  },
+  command = 'setlocal shiftwidth=2 tabstop=2'
+})
+
+-- Wrap lines in markdown
+augroup('wrapLines', { clear = true })
+autocmd('Filetype', {
+  group = 'wrapLines',
+  pattern = { 'markdown' },
+  command = 'setlocal wrap linebreak'
+})

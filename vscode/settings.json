@@ -33,6 +33,6 @@
     "git.ignoreLegacyWarning": true,
     "gitlens.codeLens.enabled": false,
     "terminal.integrated.enableMultiLinePasteWarning": false,
-    "cmake.configureOnOpen": false,
-    "terminal.integrated.shellIntegration.enabled": true
+    "terminal.integrated.shellIntegration.enabled": true,
+    "git.mergeEditor": false,
 }
