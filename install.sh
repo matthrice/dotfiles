@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ############################################################
-# install.sh                                                   
+# install.sh
 ############################################################
 
 help()
@@ -24,7 +24,7 @@ while getopts ":zh:" option; do
       h) # display Help
          help
          exit;;
-      z) # should overwrite zshrc 
+      z) # should overwrite zshrc
          overwrite_zshrc=false;;
      \?) # Invalid option
          echo "Error: Invalid option"
@@ -32,86 +32,87 @@ while getopts ":zh:" option; do
    esac
 done
 
-mkdir -p $HOME/plugins
+mkdir -p "$HOME/plugins"
 
 # install packer
-if [[ ! -d $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
+if [[ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]]; then
     echo "Installing packer..."
     git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-        $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+        "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
 fi
 
 # install fzf
-if [[ ! -f $HOME/plugins/.fzf.zsh ]]; then
+if [[ ! -f "$HOME/plugins/.fzf.zsh" ]]; then
     echo "Installing fzf..."
-    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/plugins/.fzf 
-    $HOME/plugins/.fzf/install --no-bash --key-bindings --completion --no-update-rc
-    mv $HOME/.fzf.zsh $HOME/plugins/.fzf.zsh
+    git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/plugins/.fzf"
+    "$HOME/plugins/.fzf/install" --no-bash --key-bindings --completion --no-update-rc
+    mv "$HOME/.fzf.zsh" "$HOME/plugins/.fzf.zsh"
 fi
 
 # install fast-syntax-highlighting
-if [[ ! -d $HOME/plugins/fast-syntax-highlighting ]]; then
+if [[ ! -d "$HOME/plugins/fast-syntax-highlighting" ]]; then
     echo "Installing fast-synax-highlighting..."
-    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting $HOME/plugins/fast-syntax-highlighting
+    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting "$HOME/plugins/fast-syntax-highlighting"
 fi
 
 # install pure prompt
-if [[ ! -d $HOME/plugins/pure ]]; then
+if [[ ! -d "$HOME/plugins/pure" ]]; then
     echo "Installing pure prompt..."
-    git clone https://github.com/sindresorhus/pure.git $HOME/plugins/pure
+    git clone https://github.com/sindresorhus/pure.git "$HOME/plugins/pure"
 fi
 
 # install git completion
-if [[ ! -d $HOME/plugins/git-completion ]]; then
+if [[ ! -d "$HOME/plugins/git-completion" ]]; then
     echo "Installing git completion..."
     mkdir "$HOME/plugins/git-completion"
     wget https://git.kernel.org/pub/scm/git/git.git/plain/contrib/completion/git-completion.zsh -O "$HOME/plugins/git-completion/git-completion.zsh"
 fi
 
 # clone git delta for themes
-if [[ ! -d $HOME/plugins/delta ]]; then
+if [[ ! -d "$HOME/plugins/delta" ]]; then
     echo "Installing delta themes..."
-    git clone https://github.com/dandavison/delta.git $HOME/plugins/delta
+    git clone https://github.com/dandavison/delta.git "$HOME/plugins/delta"
 fi
 
 # SYMLINK
-mkdir -p $HOME/.config
+mkdir -p "$HOME/.config"
 
 # vim
 echo "Linking vim config..."
-ln -sf $HOME/.dotfiles/vim/.vimrc $HOME/.vimrc
+ln -sf "$HOME/.dotfiles/vim/.vimrc" "$HOME/.vimrc"
 
 # nvim
 echo "Linking nvim config..."
-mkdir -p $HOME/.config/nvim
-ln -sf $HOME/.dotfiles/neovim/init.lua $HOME/.config/nvim/init.lua
+mkdir -p "$HOME/.config/nvim"
+ln -sf "$HOME/.dotfiles/neovim/init.lua" "$HOME/.config/nvim/init.lua"
 
-# git 
+# git
 echo "Linking git config..."
-mkdir -p $HOME/.config/git
-ln -sf $HOME/.dotfiles/git/config $HOME/.config/git/config
+mkdir -p "$HOME/.config/git"
+ln -sf "$HOME/.dotfiles/git/config" "$HOME/.config/git/config"
 
 
 # tmux
 echo "Linking tmux config..."
-ln -sf $HOME/.dotfiles/tmux/.tmux.conf $HOME/.tmux.conf
+ln -sf "$HOME/.dotfiles/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
-# mac specific installs
+# mac-specific installs
 if [[ $(uname) == "Darwin" ]]; then
+
     # vscode
     echo "Linking vscode config..."
 
-    ln -sf $HOME/.dotfiles/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
-    ln -sf $HOME/.dotfiles/vscode/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
-    ln -sf $HOME/.dotfiles/vscode/snippets.code-snippets $HOME/Library/Application\ Support/Code/User/snippets/snippets.code-snippets
+    ln -sf "$HOME/.dotfiles/vscode/settings.json" "$HOME/Library/Application\ Support/Code/User/settings.json"
+    ln -sf "$HOME/.dotfiles/vscode/keybindings.json" "$HOME/Library/Application\ Support/Code/User/keybindings.json"
+    ln -sf "$HOME/.dotfiles/vscode/snippets.code-snippets" "$HOME/Library/Application\ Support/Code/User/snippets/snippets.code-snippets"
 
-    # intellij 
+    # intellij
     echo "Linking intellij config..."
-    ln -sf $HOME/.dotfiles/intellij/.ideavimrc $HOME/.ideavimrc
+    ln -sf "$HOME/.dotfiles/intellij/.ideavimrc" "$HOME/.ideavimrc"
 
     # wezterm
     echo "Linking wezterm config..."
-    ln -sF $HOME/.dotfiles/wezterm/.wezterm.lua $HOME/.wezterm.lua
+    ln -sF "$HOME/.dotfiles/wezterm/.wezterm.lua" "$HOME/.wezterm.lua"
 fi
 
 if [[ $overwrite_zshrc == true ]]; then

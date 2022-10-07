@@ -2,22 +2,20 @@
 
 ```
 git clone https://github.com/matthrice/dotfiles.git ~/.dotfiles
+
+# install all .dotfiles
 ~/.dotfiles/install.sh
 
-# mac specific
-~/.dotfiles/mac_install.sh -h
+# install a basic bash environment suitable for servers
+~/.dotfiles/basic_bash_install.sh
+
+# install applications
+~/.dotfiles/mac_install.sh
 ```
 
 ## Iterm2
 
 - Profiles -> Colors -> Load Presets -> custom-vscode.itermcolors
-- Add the following to Profiles -> General -> Commmand -> Login Shell:
-
-```
-tmux new-session -A -s {{name}}
-```
-
-- Set font to JetBrains Mono Regular
 
 ## Rectangle
 

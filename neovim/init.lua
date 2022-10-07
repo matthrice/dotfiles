@@ -20,31 +20,36 @@ local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup(function()
-  use {'wbthomason/packer.nvim', opt = true}
-   use { "catppuccin/nvim", as = "catppuccin" }
-  use { 'ibhagwan/fzf-lua',
-   requires = { 'vijaymarupudi/nvim-fzf' }
-  }
   use {
-    'nvim-lualine/lualine.nvim',
+    'wbthomason/packer.nvim',
+    opt = true,
   }
-  use "kyazdani42/nvim-tree.lua"
+  use 'Mofiqul/vscode.nvim'
+  use 'nvim-lualine/lualine.nvim'
+  use 'kyazdani42/nvim-tree.lua'
+  use 'ellisonleao/glow.nvim'
+  use {
+    'ibhagwan/fzf-lua',
+    requires = { 'vijaymarupudi/nvim-fzf' },
+  }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
-  use {"ellisonleao/glow.nvim"}
 end)
 
---------- catpuccin.nvim ---------
-vim.g.catppuccin_flavour = "frappe"
-require("catppuccin").setup()
-vim.cmd [[colorscheme catppuccin]]
+--------- vscode.nvim ---------
+vim.o.background = 'dark'
+local c = require('vscode.colors')
+require('vscode').setup({
+    italic_comments = true,
+    disable_nvimtree_bg = true,
+})
 
 --------- lua-line ---------
 require('lualine').setup{
   options = {
-    theme  = 'catppuccin',
+    theme  = 'vscode',
     icons_enabled = false,
   },
 }
@@ -55,7 +60,6 @@ vim.api.nvim_set_keymap('n', '<c-P>',
   { noremap = true, silent = true })
 
 --------- nvim-tree ---------
-
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -94,7 +98,6 @@ opt.ignorecase = true               -- Ignore case
 opt.joinspaces = false              -- No double spaces with join
 opt.list = true                     -- Show some invisible characters
 opt.number = true                   -- Show line numbers
-opt.relativenumber = true           -- Relative line numbers
 opt.scrolloff = 4                   -- Lines of context
 opt.shiftround = true               -- Round indent
 opt.shiftwidth = 4                  -- Size of an indent
@@ -141,7 +144,7 @@ augroup('setIndent', { clear = true })
 autocmd('Filetype', {
   group = 'setIndent',
   pattern = { 'xml', 'html', 'xhtml', 'css', 'scss', 'javascript', 'typescript',
-    'yaml', 'lua'
+    'yaml', 'lua', 'markdown'
   },
   command = 'setlocal shiftwidth=2 tabstop=2'
 })
@@ -153,3 +156,40 @@ autocmd('Filetype', {
   pattern = { 'markdown' },
   command = 'setlocal wrap linebreak'
 })
+
+-------------------- DEFAULTS -------------------------------
+
+-- disable some builtin vim plugins
+local default_plugins = {
+  "2html_plugin",
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "matchit",
+  "tar",
+  "tarPlugin",
+  "rrhelper",
+  "spellfile_plugin",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
+  "tutor",
+  "rplugin",
+  "syntax",
+  "synmenu",
+  "optwin",
+  "compiler",
+  "bugreport",
+  "ftplugin",
+}
+
+for _, plugin in pairs(default_plugins) do
+  g["loaded_" .. plugin] = 1
+end
+

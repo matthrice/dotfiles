@@ -1,3 +1,5 @@
+#!/usr/local/bin/bash
+
 shopt -s histappend
 HISTFILESIZE=1000000
 HISTSIZE=1000000
@@ -8,7 +10,7 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-alias src="source $HOME/.bashrc"
+alias src=source "$HOME/.bashrc"
 alias g=git
 
 alias ll='ls -l'
@@ -22,4 +24,5 @@ source "$HOME/plugins/.fzf.bash"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
-export PS1="\u@\h \w\n❯ \[$(tput sgr0)\]"
+PS1="\u@\h \w\n❯ \[$(tput sgr0)\]"
+export PS1
