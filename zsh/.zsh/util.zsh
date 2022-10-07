@@ -1,5 +1,17 @@
+# Get the head branch
+function get_head_git_branch ()
+{
+    git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+}
+
+# Get the current branch
+function get_current_branch ()
+{
+    git rev-parse --abbrev-ref HEAD
+}
+
 # Rebase onto latest upstream changes
-rbb ()
+function rbb ()
 {
     local stash_size
     local target_branch
