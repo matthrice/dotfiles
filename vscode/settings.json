@@ -6,6 +6,7 @@
     "editor.minimap.enabled": false,
     "editor.detectIndentation": false,
     "editor.quickSuggestionsDelay": 0,
+    "editor.lineNumbers": "relative",
     "extensions.ignoreRecommendations": true,
     "diffEditor.codeLens": true,
     "diffEditor.ignoreTrimWhitespace": false,
