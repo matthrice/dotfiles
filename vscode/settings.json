@@ -27,7 +27,7 @@
     "clangd.arguments": [
         "--clang-tidy",
         "--background-index",
-        "--header-insertion=iwyu",
+        "--header-insertion=never",
         "--compile-commands-dir=${workspaceFolder}",
         "--pretty",
     ],
@@ -39,4 +39,5 @@
     "[lua]": {
         "editor.tabSize": 2
     },
+    "editor.inlayHints.enabled": "off",
 }
