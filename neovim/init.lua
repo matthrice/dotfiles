@@ -116,10 +116,6 @@ opt.wildmode = {'list', 'longest'}  -- Command-line completion mode
 opt.wrap = false                    -- Disable line wrap
 opt.lazyredraw = true               -- Faster scrolling
 
--- escape
-map('i', 'jk', '<Esc>')
-map('i', 'jj', '<Esc>')
-
 -- navigate panes
 map('n', '<c-j>', '<c-w>j')
 map('n', '<c-h>', '<c-w>h')
@@ -135,12 +131,6 @@ autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
   end
-})
-
--- Remove whitespace on save
-autocmd('BufWritePre', {
-  pattern = '',
-  command = ":%s/\\s\\+$//e"
 })
 
 -- Set indentation to 2 spaces

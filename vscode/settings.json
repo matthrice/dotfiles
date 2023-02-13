@@ -24,13 +24,6 @@
     "workbench.iconTheme": "material-icon-theme",
     "clangd.restartAfterCrash": true,
     "clangd.onConfigChanged": "restart",
-    "clangd.arguments": [
-        "--clang-tidy",
-        "--background-index",
-        "--header-insertion=never",
-        "--compile-commands-dir=${workspaceFolder}",
-        "--pretty",
-    ],
     "C_Cpp.intelliSenseEngine": "Disabled",
     "[cpp]": {
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
@@ -40,4 +33,7 @@
         "editor.tabSize": 2
     },
     "editor.inlayHints.enabled": "off",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
 }
