@@ -54,21 +54,17 @@ brew install \
     procs \
     gdu \
     shellcheck \
-    switchaudio-osx \
-    terminal-notifier
+    switchaudio-osx
 
 # install apps
 if [[ $install_apps == true ]]; then
     brew tap homebrew/cask-fonts
-    brew tap wez/wezterm
     echo "Installing applications..."
     brew install --cask \
         raycast \
         visual-studio-code \
         iterm2 \
-        rectangle \
-        alt-tab \
-        wez/wezterm
+        rectangle
 
     echo "Installing fonts..."
     brew install --cask \
