@@ -106,9 +106,8 @@ if [[ $(uname) == "Darwin" ]]; then
     ln -sf "$HOME/.dotfiles/vscode/keybindings.json" "$HOME/Library/Application\ Support/Code/User/keybindings.json"
     ln -sf "$HOME/.dotfiles/vscode/snippets.code-snippets" "$HOME/Library/Application\ Support/Code/User/snippets/snippets.code-snippets"
 
-    # karabiner
-    echo "Linking karabiner config..."
-    ln -sf "$HOME/.dotfiles/karabiner/karabiner.json"  "$HOME/.config/karabiner/karabiner.json"
+    # hammerspoon
+    ln -sf "$HOME/.dotfiles/hammerspoon/init.lua"  "$HOME/.hammerspoon/init.lua"
 fi
 
 if [[ $overwrite_zshrc == true ]]; then
