@@ -16,13 +16,6 @@ alias ll='ls -l'
 alias l='ls -CF'
 alias la='ls -al'
 
-# bazel
-alias b='bazel'
-alias bb='bazel build'
-alias br='bazel run'
-alias bt='bazel test --test_output=all'
-alias bq='bazel query'
-
 # pretty print
 alias prettyjson='python -m json.tool'
 
