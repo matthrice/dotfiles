@@ -41,3 +41,8 @@ prompt pure
 
 # fast syntax highlighting
 source "$HOME/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+
+# start tmux if we are sshing
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+    tmux -CC new-session -A -s $USER
+fi
