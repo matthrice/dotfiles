@@ -1,6 +1,3 @@
-# edit and source profiles
-alias src=source "$HOME/.zshrc"
-
 # git
 alias g=git
 

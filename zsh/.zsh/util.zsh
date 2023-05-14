@@ -27,3 +27,8 @@ function rbb ()
     fi
 }
 
+# SSH with tmux
+function tsh()
+{
+    ssh -t "${1}" 'tmux -CC new -A -s $USER'
+}
