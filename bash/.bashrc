@@ -10,7 +10,6 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-alias src=source "$HOME/.bashrc"
 alias g=git
 
 alias ll='ls -l'
