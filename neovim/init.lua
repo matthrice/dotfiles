@@ -20,21 +20,14 @@ local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup(function()
-  use {
-    'wbthomason/packer.nvim',
+  use { 'wbthomason/packer.nvim',
     opt = true,
   }
   use 'Mofiqul/vscode.nvim'
   use 'nvim-lualine/lualine.nvim'
-  use 'kyazdani42/nvim-tree.lua'
-  use 'ellisonleao/glow.nvim'
   use {
     'ibhagwan/fzf-lua',
     requires = { 'vijaymarupudi/nvim-fzf' },
-  }
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
   use 'ggandor/leap.nvim'
 end)
@@ -46,6 +39,7 @@ require('vscode').setup({
     italic_comments = true,
     disable_nvimtree_bg = true,
 })
+require('vscode').load()
 
 --------- lua-line ---------
 require('lualine').setup{
@@ -60,37 +54,6 @@ vim.api.nvim_set_keymap('n', '<c-P>',
   "<cmd>lua require('fzf-lua').files()<CR>",
   { noremap = true, silent = true })
 
---------- nvim-tree ---------
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
-
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  renderer = {
-    icons = {
-      show = {
-        file = false,
-        folder = false,
-        folder_arrow = false,
-        git = false,
-      },
-    },
-  },
-  view = {
-    adaptive_size = true,
-    mappings = {
-      list = {
-        { key = "u", action = "dir_up" },
-      },
-    },
-  },
-  filters = {
-    dotfiles = true,
-  },
-})
-
-map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
-
 --------- leap ---------
 require('leap').set_default_keymaps()
 
@@ -101,7 +64,7 @@ opt.hidden = true                   -- Enable background buffers
 opt.ignorecase = true               -- Ignore case
 opt.joinspaces = false              -- No double spaces with join
 opt.list = true                     -- Show some invisible characters
-opt.relativenumber = true                   -- Show line numbers
+opt.relativenumber = true           -- Show line numbers
 opt.scrolloff = 4                   -- Lines of context
 opt.shiftround = true               -- Round indent
 opt.shiftwidth = 4                  -- Size of an indent
