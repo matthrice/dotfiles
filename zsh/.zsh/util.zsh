@@ -30,5 +30,19 @@ function rbb ()
 # SSH with tmux
 function tsh()
 {
-    ssh -t "${1}" 'tmux -CC new -A -s $USER'
+    local host="${1}"
+
+    # copy ssh key if required
+    if ! ssh -q -o "BatchMode=yes" "${host}" exit; then
+        ssh-copy-id "${host}"
+    fi
+
+    ssh -t "${USER}@${host}" '
+        if [ ! -d "${HOME}/.dotfiles" ]; then
+            git clone https://github.com/matthrice/dotfiles.git "${HOME}/.dotfiles"
+            "${HOME}/.dotfiles/basic_bash_install.sh"
+        fi
+
+        tmux -CC new -A -s "${USER}"
+    '
 }

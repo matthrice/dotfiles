@@ -1,7 +1,7 @@
 {
-    "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "'Iosevka', 'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
-    "editor.fontSize": 12,
+    "editor.fontSize": 14,
     "editor.renderWhitespace": "all",
     "editor.minimap.enabled": false,
     "editor.detectIndentation": false,
@@ -24,7 +24,7 @@
     "workbench.iconTheme": "material-icon-theme",
     "clangd.restartAfterCrash": true,
     "clangd.onConfigChanged": "restart",
-    "C_Cpp.intelliSenseEngine": "Disabled",
+    "C_Cpp.intelliSenseEngine": "disabled",
     "[cpp]": {
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
         "editor.tabSize": 4
@@ -37,7 +37,10 @@
         "asvetliakov.vscode-neovim": 1
     },
     "[python]": {
-        "editor.formatOnType": true
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.black-formatter"
     },
     "git.openRepositoryInParentFolders": "never",
+    "hediet.vscode-drawio.resizeImages": null,
+    "workbench.colorTheme": "Default Light Modern",
 }
