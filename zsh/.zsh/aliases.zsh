@@ -10,7 +10,7 @@ alias mciall='mci -U -DdownloadSources=true'
 
 # ls
 alias ll='ls -l'
-alias l='ls -CF'
+alias l='ls --color=none'
 alias la='ls -al'
 
 # pretty print
