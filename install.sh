@@ -102,9 +102,9 @@ if [[ $(uname) == "Darwin" ]]; then
     # vscode
     echo "Linking vscode config..."
 
-    ln -sf "$HOME/.dotfiles/vscode/settings.json" "$HOME/Library/Application\ Support/Code/User/settings.json"
-    ln -sf "$HOME/.dotfiles/vscode/keybindings.json" "$HOME/Library/Application\ Support/Code/User/keybindings.json"
-    ln -sf "$HOME/.dotfiles/vscode/snippets.code-snippets" "$HOME/Library/Application\ Support/Code/User/snippets/snippets.code-snippets"
+    ln -sf "$HOME/.dotfiles/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
+    ln -sf "$HOME/.dotfiles/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
+    ln -sf "$HOME/.dotfiles/vscode/snippets.code-snippets" "$HOME/Library/Application Support/Code/User/snippets/snippets.code-snippets"
 
     # hammerspoon
     ln -sf "$HOME/.dotfiles/hammerspoon/init.lua"  "$HOME/.hammerspoon/init.lua"
