@@ -77,6 +77,7 @@ ln -sf "$HOME/.dotfiles/vim/.vimrc" "$HOME/.vimrc"
 
 # nvim
 echo "Linking nvim config..."
+rm -rf "$HOME/.config/nvim"
 ln -sF "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
 
 # git
