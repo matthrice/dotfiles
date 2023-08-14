@@ -11,6 +11,7 @@
     "diffEditor.codeLens": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "terminal.integrated.localEchoLatencyThreshold": -1,
+    "terminal.integrated.fontSize": 14,
     "terminal.integrated.mouseWheelScrollSensitivity": 0.5,
     "terminal.integrated.macOptionClickForcesSelection": true,
     "terminal.integrated.macOptionIsMeta": true,
