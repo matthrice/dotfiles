@@ -34,13 +34,6 @@ done
 
 mkdir -p "$HOME/plugins"
 
-# install packer
-if [[ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]]; then
-    echo "Installing packer..."
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-        "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
-fi
-
 # install fzf
 if [[ ! -f "$HOME/plugins/.fzf.zsh" ]]; then
     echo "Installing fzf..."
@@ -83,8 +76,7 @@ ln -sf "$HOME/.dotfiles/vim/.vimrc" "$HOME/.vimrc"
 
 # nvim
 echo "Linking nvim config..."
-mkdir -p "$HOME/.config/nvim"
-ln -sf "$HOME/.dotfiles/neovim/init.lua" "$HOME/.config/nvim/init.lua"
+ln -sf "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
 
 # git
 echo "Linking git config..."
