@@ -37,7 +37,7 @@ function tsh()
         ssh-copy-id "${host}"
     fi
 
-    ssh -t "${USER}@${host}" '
+    ssh -X -t "${USER}@${host}" '
         if [ ! -d "${HOME}/.dotfiles" ]; then
             git clone https://github.com/matthrice/dotfiles.git "${HOME}/.dotfiles"
             "${HOME}/.dotfiles/basic_bash_install.sh"
