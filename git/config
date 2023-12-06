@@ -37,7 +37,7 @@
 [interactive]
     diffFilter = delta --color-only --features=interactive
 [delta]
-    features = coracias-caudatus
+    features = villsau
     side-by-side = true
 [delta "interactive"]
     keep-plus-minus-markers = false
